@@ -13,19 +13,14 @@ export default function Product({
   closeLightbox,
   handleLightbox,
   darkMode,
+  productData,
+  AddtoCart,
+  itemCount,
+  handleMinus,
+  handlePlus,
 }) {
   const [value, setValue] = useState(0);
   const product = data[value].mainImage;
-  const [itemCount, setItemCount] = useState(1);
-
-  const handlePlus = () => {
-    setItemCount(itemCount + 1);
-  };
-  const handleMinus = () => {
-    if (itemCount > 0) {
-      setItemCount(itemCount - 1);
-    }
-  };
 
   return (
     <section
@@ -61,7 +56,7 @@ export default function Product({
         <ul className="sm:hidden">
           <li
             onClick={nextSlide}
-            className="bg-white absolute top-1/2 right-0 lg:right-5 rounded-full w-[50px] flex justify-center items-center h-[50px] "
+            className="bg-white p-1 w-[30px] h-[30px] absolute top-1/2 right-0 lg:right-5 rounded-full lg:w-[50px] flex justify-center items-center lg:h-[50px] "
           >
             <button>
               <img src={next} alt="" />
@@ -69,7 +64,7 @@ export default function Product({
           </li>
           <li
             onClick={prevSlide}
-            className="bg-white absolute top-1/2 left-5 rounded-full w-[50px] flex justify-center items-center h-[50px]"
+            className="bg-white  p-1 w-[40px] h-[40px] absolute top-1/2 left-5 rounded-full lg:w-[50px] flex justify-center items-center lg:h-[50px]"
           >
             <button>
               <img src={prev} alt="" />
@@ -106,27 +101,25 @@ export default function Product({
       </article>
 
       <article className="lg:p-20 xsm:p-5">
-        <h4 className="text-Orange font-extrabold mb-4">SNEAKER COMPANY</h4>
+        <h4 className="text-Orange font-extrabold mb-4">
+          {productData.subTitle}
+        </h4>
         <h1 className="text-3xl font-bold lg:text-5xl lg:mb-10 xsm:mb-4 xsm:text-3xl">
-          Fall Limited Edition Sneakers
+          {productData.title}
         </h1>
-        <p className="mb-4 leading-loose">
-          These low profile sneakers are your perfect casual wear companion.
-          Featuring a durable rubber outer sole, they&apos;ll withstand
-          everything the weather can offer.
-        </p>
+        <p className="mb-4 leading-loose">{productData.Description}</p>
         <div className="flex gap-3 justify-start lg:flex-col mb-1 xsm:justify-between">
           <div className="flex ">
             <h4 className="mr-5 font-extrabold sm:text-2xl xsm:text-xl">
-              $125.00
+              {productData.Price}
             </h4>
             <p className="bg-PaleOrange sm:text-lg text-Orange p-1 rounded-md font-bold xsm:text-sm">
-              50%
+              {productData.Discount}
             </p>
           </div>
           <div>
             <p className="line-through font-extralight text-xl text-gray-400 xsm:text-lg">
-              $250.00
+              {productData.OrginalPrice}
             </p>
           </div>
         </div>
@@ -160,7 +153,10 @@ export default function Product({
                 />
               </svg>
             </div>
-            <div className="ml-2 cursor-pointer "> Add to Cart</div>
+            <div className="ml-2 cursor-pointer " onClick={AddtoCart}>
+              {" "}
+              Add to Cart
+            </div>
           </div>
         </div>
       </article>

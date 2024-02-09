@@ -1,4 +1,4 @@
-export const data = [
+export const Imagedata = [
   {
     id: 1,
     mainImage: "../images/image-product-1.jpg",
@@ -20,3 +20,14 @@ export const data = [
     thumbNail: "../images/image-product-4-thumbnail.jpg",
   },
 ];
+
+export const productData = {
+  title: "Fall Limited Edition Sneakers",
+  subTitle: "SNEAKER COMPANY",
+  Description:
+    "These low profile sneakers are your perfect casual wear companion.Featuring a durable rubber outer sole, they'll withstandeverything the weather can offer.",
+  Price: "$125.00",
+  Discount: "50%",
+  thumbNail: "../images/image-product-1-thumbnail.jpg",
+  OrginalPrice: "$250.00",
+};
